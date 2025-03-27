@@ -89,18 +89,27 @@ public class ScoreCard {
     }
 
     private void listar(List<String> puntuacion) {
-        String string = toString();
-        StringBuilder output = new StringBuilder();
-        for (int i = 0; i < puntuacion.size(); i++) {
-            output.append(puntuacion.get(i)).append("\n");
+        try{
+            String string = toString();
+            StringBuilder output = new StringBuilder();
+            for (int i = 0; i < puntuacion.size(); i++) {
+                String punt = puntuacion.get(i);
+                String[] parts = punt.split("-");
+                String part1 = parts[0];
+                String part2 = parts[1];
+                output.append("\t" + part1 + "\t\t\t\t\t\t\t" + part2 + "\n");
+            }
+            System.out.println(string + output);
+        }catch (Exception e){
+            System.out.println(e);
         }
-        System.out.println(string + output);
     }
 
     @Override
     public String toString() {
         StringBuilder puntuacionBuilder = new StringBuilder();
         puntuacionBuilder.append("\t\t\t\t ").append(getColor().toUpperCase()).append("\n");
+        puntuacionBuilder.append("\t").append(getBlueCorner()).append("\t\t").append(getRedCorner()).append("\n");
         puntuacionBuilder.append("\t\t\t\t"+getNumRounds().length).append(" rounds").append("\n");
         puntuacionBuilder.append("Round\tScore\tRound\tScore\tRound\n");
         puntuacionBuilder.append("Score\tTotal\t\t\tTotal\tScore\n");

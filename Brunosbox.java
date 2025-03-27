@@ -76,7 +76,7 @@ public class Brunosbox
          * del ejercicio.
          */
 
-        System.out.println(whiteScoreCard.toString());
+        System.out.println(whiteScoreCard);
 
 
         /**
