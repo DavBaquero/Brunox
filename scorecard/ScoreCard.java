@@ -12,7 +12,7 @@ public class ScoreCard {
     private String redCorner = "";
     private String blueCorner = "";
     private String[] judgeScoreCard;
-    private Round[] numRounds;
+    private Round[] numRounds = new Round[0];
 
     public ScoreCard(String color) {
         this.color = color;
@@ -89,10 +89,21 @@ public class ScoreCard {
     }
 
     private void listar(List<String> puntuacion) {
-        StringBuilder puntuacionBuilder = new StringBuilder();
+        String string = toString();
+        StringBuilder output = new StringBuilder();
         for (int i = 0; i < puntuacion.size(); i++) {
-            puntuacionBuilder.append(puntuacion.get(i)).append("\n");
+            output.append(puntuacion.get(i)).append("\n");
         }
-        System.out.println(puntuacionBuilder);
+        System.out.println(string + output);
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder puntuacionBuilder = new StringBuilder();
+        puntuacionBuilder.append("\t\t\t\t ").append(getColor().toUpperCase()).append("\n");
+        puntuacionBuilder.append("\t\t\t\t"+getNumRounds().length).append(" rounds").append("\n");
+        puntuacionBuilder.append("Round\tScore\tRound\tScore\tRound\n");
+        puntuacionBuilder.append("Score\tTotal\t\t\tTotal\tScore\n");
+        return puntuacionBuilder.toString();
     }
 }
